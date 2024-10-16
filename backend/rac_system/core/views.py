@@ -128,6 +128,7 @@ def upload_and_match(request):
 
     return render(request, 'upload.html', {'form': form})
 
+@login_required(login_url='login')
 def download_pdf(request):
     # Query all scores for the PDF
     scores = Score.objects.all()
