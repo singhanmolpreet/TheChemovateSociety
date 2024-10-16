@@ -12,7 +12,28 @@
             padding: 20px;
             background-color: #f4f4f9;
             color: #333;
+            position: relative;
         }
+        
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #ff4d4d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #e60000;
+        }
+
         h1 {
             text-align: center;
             color: #333;
@@ -84,6 +105,8 @@
     </style>
 </head>
 <body>
+    <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+    
     <div class="container">
         <h1>Expert-Candidate Match Results</h1>
         <a href="{% url 'download_pdf' %}" class="download-button">Download Results as PDF</a>  <!-- PDF download button -->

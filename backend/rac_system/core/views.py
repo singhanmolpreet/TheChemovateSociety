@@ -14,6 +14,44 @@ from django.contrib.auth.decorators import login_required
 
 
 
+def SignupPage(request):
+    if request.method=='POST':
+        uname=request.POST.get('username')
+        email=request.POST.get('email')
+        pass1=request.POST.get('password1')
+        pass2=request.POST.get('password2')
+
+        if pass1!=pass2:
+            return HttpResponse("Your password and confrom password are not Same!!")
+        else:
+
+            my_user=User.objects.create_user(uname,email,pass1)
+            my_user.save()
+            return redirect('login')
+        
+
+
+
+    return render (request,'signup.html')
+
+def LoginPage(request):
+    if request.method=='POST':
+        username=request.POST.get('username')
+        pass1=request.POST.get('pass')
+        user=authenticate(request,username=username,password=pass1)
+        if user is not None:
+            login(request,user)
+            return redirect('upload_and_match')
+        else:
+            return HttpResponse ("Username or Password is incorrect!!!")
+
+    return render (request,'login.html')
+
+def LogoutPage(request):
+    logout(request)
+    return redirect('login')
+
+
 def calculate_relevancy(expert_expertise, candidate_expertise):
     # Handle empty expertise fields
     expert_expertise = expert_expertise.strip()
@@ -37,6 +75,7 @@ def calculate_relevancy(expert_expertise, candidate_expertise):
     relevancy_score = (len(common_skills) / len(total_unique_skills)) * 10  # Score out of 10
     return relevancy_score
 
+@login_required(login_url='login')
 def upload_and_match(request):
     if request.method == 'POST':
         form = UploadCSVForm(request.POST, request.FILES)
@@ -83,13 +122,11 @@ def upload_and_match(request):
                 # Save the best match
                 Score.objects.create(expert=best_expert, candidate=candidate, relevancy_score=best_score)
 
-            return render(request, 'core/results.html', {'scores': Score.objects.all()})
+            return render(request, 'results.html', {'scores': Score.objects.all()})
     else:
         form = UploadCSVForm()
 
-    return render(request, 'core/upload.html', {'form': form})
-
-
+    return render(request, 'upload.html', {'form': form})
 
 def download_pdf(request):
     # Query all scores for the PDF
@@ -125,43 +162,3 @@ def download_pdf(request):
     response['Content-Disposition'] = 'attachment; filename="interview_assignments.pdf"'
     return response
 
-@login_required(login_url='login')
-def HomePage(request):
-    return render (request,'upload.html')
-
-def SignupPage(request):
-    if request.method=='POST':
-        uname=request.POST.get('username')
-        email=request.POST.get('email')
-        pass1=request.POST.get('password1')
-        pass2=request.POST.get('password2')
-
-        if pass1!=pass2:
-            return HttpResponse("Your password and confrom password are not Same!!")
-        else:
-
-            my_user=User.objects.create_user(uname,email,pass1)
-            my_user.save()
-            return redirect('login')
-        
-
-
-
-    return render (request,'signup.html')
-
-def LoginPage(request):
-    if request.method=='POST':
-        username=request.POST.get('username')
-        pass1=request.POST.get('pass')
-        user=authenticate(request,username=username,password=pass1)
-        if user is not None:
-            login(request,user)
-            return redirect('upload_and_match')
-        else:
-            return HttpResponse ("Username or Password is incorrect!!!")
-
-    return render (request,'login.html')
-
-def LogoutPage(request):
-    logout(request)
-    return redirect('login')
