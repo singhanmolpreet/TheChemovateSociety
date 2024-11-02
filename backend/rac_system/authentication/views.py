@@ -2,22 +2,51 @@ from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from rac_system import settings
+from django.contrib import messages
+
 
 def SignupPage(request):
     if request.method=='POST':
-        uname=request.POST.get('username')
+        username=request.POST.get('username')
         email=request.POST.get('email')
         pass1=request.POST.get('password1')
         pass2=request.POST.get('password2')
 
+        if User.objects.filter(username=username):
+            messages.error(request, "Username already exist! Please try some other username.")
+            return redirect('signup')
+        
+        '''if User.objects.filter(email=email):
+            messages.error(request, "Email already registered!!")
+            return redirect('signup')
+        '''
+        if not username.isalnum():
+            messages.error(request, "Username must be Alpha-Numeric!")
+            return redirect('signup')
+        
         if pass1!=pass2:
-            return HttpResponse("Your password and confirm password are not Same!!")
+            messages.error(request,"Your password and confirm password are not Same!!")
+        
+
         else:
 
-            my_user=User.objects.create_user(uname,email,pass1)
+            my_user=User.objects.create_user(username,email,pass1)
             my_user.save()
-            return redirect('login')
-    
+            #messages.success(request, "Your Account has been successfully created. We have sent you a confirmation email, please confirm to complete registration.")
+
+            # Welcome Email
+        
+            subject = "Welcome to Match Maestro"
+            message = "Welcome to Match Maestro \n" + "Please confirm your email in order to authenticate your account \n" + "Thanking you \n" + "Team Match Maestro \n"
+            from_email = settings.EMAIL_HOST_USER
+            to_list = [my_user.email]
+            send_mail(subject, message, from_email, to_list, fail_silently=True)
+        
+            #return HttpResponse('Please confirm your email address to complete the registration')
+
+        #return redirect('login')
 
     return render (request,'authentication/signup.html')
 
