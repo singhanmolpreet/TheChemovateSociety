@@ -92,7 +92,7 @@ def LoginPage(request):
             login(request,user) 
             return redirect('upload_and_match')
         else:
-            messages.error("Username or Password is incorrect!!!")
+            messages.error(request, "Username or Password is incorrect!!!")
 
     return render (request,'authentication/login.html')
 
