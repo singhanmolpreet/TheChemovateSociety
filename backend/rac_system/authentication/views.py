@@ -53,7 +53,7 @@ def SignupPage(request):
             my_user.last_name=last_name
             my_user.is_active=False   
             my_user.save()
-            #messages.success(request, "Your Account has been successfully created. We have sent you a confirmation email, please confirm to complete registration.")
+            messages.success(request, "Your Account has been successfully created. \n" + "We have sent you a confirmation email, please confirm to complete registration.")
 
             # Welcome Email
         
@@ -63,8 +63,6 @@ def SignupPage(request):
             to_list = [my_user.email]
             send_mail(subject, message, from_email, to_list, fail_silently=True)
         
-            #return HttpResponse('Please confirm your email address to complete the registration')
-            
             #Confirmation Email
         
             current_site = get_current_site(request)
@@ -88,13 +86,13 @@ def SignupPage(request):
 def LoginPage(request):
     if request.method=='POST':
         username=request.POST.get('username')
-        pass1=request.POST.get('pass')
+        pass1=request.POST.get('password')
         user=authenticate(request,username=username,password=pass1)
         if user is not None:
             login(request,user) 
             return redirect('upload_and_match')
         else:
-            return HttpResponse ("Username or Password is incorrect!!!")
+            messages.error("Username or Password is incorrect!!!")
 
     return render (request,'authentication/login.html')
 
