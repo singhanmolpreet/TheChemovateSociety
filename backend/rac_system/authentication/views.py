@@ -37,6 +37,10 @@ def SignupPage(request):
             messages.error(request, "Username must be Alpha-Numeric!")
             return redirect('signup')
         
+        if len(pass1) < 8:
+            messages.error(request, "Password must be atleast 8 characters!")
+            return redirect('signup')
+        
         if pass1!=pass2:
             messages.error(request,"Your password and confirm password are not Same!!")
             return redirect('signup')
