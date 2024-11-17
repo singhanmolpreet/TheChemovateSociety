@@ -114,4 +114,4 @@ def activate(request, uidb64, token):
 
 def LogoutPage(request):
     logout(request)
-    return redirect('login')
+    return redirect('home')

@@ -6,8 +6,11 @@ from io import TextIOWrapper
 from django.http import HttpResponse
 from django.template.loader import get_template, render_to_string
 from fpdf import FPDF
-
 from django.contrib.auth.decorators import login_required
+
+# Home Page
+def home(request):
+    return render(request, 'core/home.html')
 
 
 def calculate_relevancy(expert_expertise, candidate_expertise):
@@ -120,4 +123,5 @@ def download_pdf(request):
     response = HttpResponse(pdf.output(dest='S').encode('latin1'), content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="interview_assignments.pdf"'
     return response
+
 
