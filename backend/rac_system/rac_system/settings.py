@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-j!je2a)!d30%y+zqfdxg8)ssf*q+-_#&ugbwsf(c3ig9vn6kln
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['expert-matching-system.onrender.com','127.0.0.1']
+ALLOWED_HOSTS = ['expert-matching-system.onrender.com','127.0.0.1','match-maestro.onrender.com']
 
 
 # Application definition
