@@ -34,6 +34,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['expert-matching-system.onrender.com','127.0.0.1','match-maestro.onrender.com']
 
+AUTH_USER_MODEL = 'authentication_usertype.CustomUser'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 
 # Application definition
 
@@ -45,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'authentication',
+    'authentication_usertype',
 ]
 
 MIDDLEWARE = [
@@ -99,6 +103,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 8,
+        }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',

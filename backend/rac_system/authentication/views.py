@@ -42,7 +42,7 @@ def SignupPage(request):
             return redirect('signup')
         
         if pass1!=pass2:
-            messages.error(request,"Your password and confirm password are not Same!!")
+            messages.error(request,"Your password and confirm password are not Same!")
             return redirect('signup')
         
 
@@ -67,7 +67,7 @@ def SignupPage(request):
         
             current_site = get_current_site(request)
             email_subject = "Confirmation Email for Match Maestro!"
-            message1 = render_to_string('email_confirmation.html' , {
+            message1 = render_to_string('authentication/email_confirmation.html' , {
                 'name' : my_user.first_name,
                 'domain' : current_site.domain,
                 'uid' : urlsafe_base64_encode(force_bytes(my_user.pk)),
@@ -109,9 +109,12 @@ def activate(request, uidb64, token):
         login(request, my_user)
         return redirect('upload_and_match')
     else:   
-        return render(request, 'activation_failed.html')
+        return render(request, 'authentication/activation_failed.html')
     
 
 def LogoutPage(request):
     logout(request)
     return redirect('home')
+
+def LoginPage1(request):
+    return render (request,'authentication/login1.html')
