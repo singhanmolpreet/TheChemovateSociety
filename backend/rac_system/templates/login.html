@@ -1,20 +1,16 @@
 {% extends 'base.html' %}
-{% block title %}Login{% endblock %}
+
 {% block content %}
-<h2>Login</h2>
-<form method="POST" style="display: flex; flex-direction: column; gap: 20px;">
-    {% csrf_token %}
-    <div>
-        <label for="email" style="display: block; margin-bottom: 8px;">Email:</label>
-        <input type="email" name="email" id="email" required style="width: 100%; padding: 10px; border-radius: 5px; border: none; background-color: #282828; color: #dcdcdc;">
-    </div>
-    <div>
-        <label for="password" style="display: block; margin-bottom: 8px;">Password:</label>
-        <input type="password" name="password" id="password" required style="width: 100%; padding: 10px; border-radius: 5px; border: none; background-color: #282828; color: #dcdcdc;">
-    </div>
-    <button type="submit" style="padding: 12px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">Login</button>
-    {% if error %}
-        <p style="color: red; text-align: center;">{{ error }}</p>
-    {% endif %}
-</form>
+    <section class="hero">
+        <h1>Login</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="email" name="email" placeholder="Email" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <button type="submit">Login</button>
+        </form>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    </section>
 {% endblock %}

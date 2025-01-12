@@ -9,6 +9,12 @@ class UserRegistrationForm(forms.ModelForm):
         fields = ['email', 'name', 'role', 'password']
 
 class CandidateExtraForm(forms.ModelForm):
+    experience = forms.IntegerField(
+        min_value=0,  # Minimum value to ensure no negative values
+        label="Experience (in months)",
+        widget=forms.NumberInput(attrs={'placeholder': 'Enter experience in months'}),
+    )
+    
     class Meta:
         model = CandidateProfile
         fields = ['experience', 'expertise', 'image']

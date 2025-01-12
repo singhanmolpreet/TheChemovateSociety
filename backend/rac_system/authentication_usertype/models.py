@@ -53,7 +53,7 @@ class CandidateProfile(models.Model):
     is_expert = models.BooleanField(default=False)
     
     def __str__(self):
-        return self.email
+        return self.user.email
     
 class CompanyProfile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='company_profile')
@@ -65,7 +65,7 @@ class CompanyProfile(models.Model):
     gstin = models.CharField(max_length=15, unique=True)
     
     def __str__(self):
-        return self.company_name
+        return self.user.email
     
 class ExpertAssignment(models.Model):
     expert = models.ForeignKey(CandidateProfile, on_delete=models.CASCADE)
