@@ -6,18 +6,69 @@
     <title>Match Maestro</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background-color: #0e0e0e; color: #dcdcdc; line-height: 1.6; }
-        
-        nav { background-color: #181818; color: #4CAF50; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); }
-        nav h1 { font-size: 1.8rem; font-weight: bold; color: #4CAF50; }
-        nav ul { list-style: none; display: flex; gap: 25px; }
-        nav ul li a { color: #dcdcdc; text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.3s ease-in-out; }
-        nav ul li a:hover { color: #4CAF50; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0e0e0e;
+            color: #dcdcdc;
+            line-height: 1.6;
+        }
 
-        footer { background-color: #181818; color: #dcdcdc; text-align: center; padding: 20px; margin-top: 20px; font-size: 0.9rem; }
-        footer a { color: #4CAF50; text-decoration: none; font-weight: 500; }
-        footer a:hover { text-decoration: underline; }
+        /* Navigation Bar */
+        nav {
+            background-color: #181818;
+            color: #4CAF50;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        nav h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+        nav ul li a {
+            color: #dcdcdc;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease-in-out;
+        }
+        nav ul li a:hover {
+            color: #4CAF50;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #181818;
+            color: #dcdcdc;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -32,9 +83,11 @@
         </ul>
     </nav>
 
-    <!-- Main Content -->
-    {% block content %}
-    {% endblock %}
+    <!-- Content Section -->
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
 
     <!-- Footer -->
     <footer>

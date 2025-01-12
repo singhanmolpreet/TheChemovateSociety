@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <section class="hero">
-        <h1>Create an Account</h1>
-        <form method="POST">
+    <section class="form-container">
+        <h2>Sign Up</h2>
+        <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Register</button>

@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <section class="hero">
-        <h1>Complete Your Company Profile</h1>
-        <form method="POST" enctype="multipart/form-data">
+    <section class="form-container">
+        <h2>Company Extra Details</h2>
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Submit</button>
+            <button type="submit">Complete Registration</button>
         </form>
     </section>
 {% endblock %}
