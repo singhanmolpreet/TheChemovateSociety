@@ -47,12 +47,12 @@ def company_register_extra(request, user_id):
         form = CompanyExtraForm()
     return render(request, 'company_extra.html', {'form': form})
 
-def login(request):
+def LoginPage(request):
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
         user = authenticate(request, email=email, password=password)
-        if user:
+        if user is not None:
             login(request, user)
             return redirect('home')  # Redirect to a home/dashboard page
         else:

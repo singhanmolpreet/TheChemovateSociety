@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Match Maestro</title>
+    <title>{% block title %}Match Maestro{% endblock %}</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -17,8 +17,6 @@
             color: #dcdcdc;
             line-height: 1.6;
         }
-
-        /* Navigation Bar */
         nav {
             background-color: #181818;
             color: #4CAF50;
@@ -51,8 +49,6 @@
         nav ul li a:hover {
             color: #4CAF50;
         }
-
-        /* Footer */
         footer {
             background-color: #181818;
             color: #dcdcdc;
@@ -69,6 +65,54 @@
         footer a:hover {
             text-decoration: underline;
         }
+        
+        .form-container {
+            background-color: #181818;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+            width: 400px;
+            margin: 80px auto 50px auto;
+        }
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        label {
+            color: #dcdcdc;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #2c2c2c;
+            color:rgb(220, 220, 220);
+            border: none;
+            border-radius: 4px;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+        }   
+        button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -83,15 +127,15 @@
         </ul>
     </nav>
 
-    <!-- Content Section -->
-    <div>
+    <!-- Page Content -->
+    <main>
         {% block content %}
         {% endblock %}
-    </div>
+    </main>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Job Portal. All rights reserved.</p>
+        <p>&copy; 2024 Match Maestro. All rights reserved.</p>
         <p><a href="#">Contact Us</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
     </footer>
 </body>

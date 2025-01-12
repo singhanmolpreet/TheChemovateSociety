@@ -6,7 +6,7 @@ class UserRegistrationForm(forms.ModelForm):
     
     class Meta:
         model = CustomUser
-        fields = ['email', 'name', 'role', 'password']
+        fields = ['name', 'email', 'role', 'password']
 
 class CandidateExtraForm(forms.ModelForm):
     experience = forms.IntegerField(
