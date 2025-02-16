@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Upcoming Events{% endblock %}
+
+{% block content %}
+<section class="events">
+    <h2>Upcoming Events</h2>
+    {% if events %}
+        <ul>
+            {% for event in events %}
+                <li>
+                    <h3>{{ event.title }}</h3>
+                    <p>{{ event.description }}</p>
+                    <p><strong>Date:</strong> {{ event.date }} | <strong>Time:</strong> {{ event.time }}</p>
+                    <p><strong>Location:</strong> {{ event.location }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No upcoming events at the moment. Stay tuned!</p>
+    {% endif %}
+</section>
+{% endblock %}

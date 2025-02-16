@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
 from pathlib import Path
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -57,6 +60,21 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'Chemovate_Society.urls'
 
+import os
+from pathlib import Path
+
+# ... other settings ...
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR.parent / 'staticcollected' # where django will collect the static files. It can not be same as STATICFILES_DIRS
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',  # Path to your static files directory
+]
+
+# ... rest of your settings ...
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

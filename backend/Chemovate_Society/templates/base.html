@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}The Chemovate Society{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <h1>The Chemovate Society</h1>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Events</a>
+                <div class="dropdown-content">
+                    <a href="#">Previous Events</a>
+                    <a href="{% url 'upcoming_events' %}">Upcoming Events</a>
+                </div>
+            </li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSe8SXOjNMKu3pLzUh09A3pwc8RXIVINZWXuU31olqBQD-xRTg/viewform">Recruitment</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Content Block -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 The Chemovate Society
+    </footer>
+
+</body>
+</html>

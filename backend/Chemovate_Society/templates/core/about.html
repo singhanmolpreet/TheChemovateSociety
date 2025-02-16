@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="about-container">
+    <h1>About The Chemovate Society</h1>
+    <p>
+        Welcome to <strong>The Chemovate Society</strong>, where chemistry meets innovation! 
+        Our club is dedicated to exploring both <strong>computational chemistry</strong> and <strong>general chemistry</strong>, 
+        fostering curiosity and creativity among students.
+    </p>
+    
+    <h2>Our Vision</h2>
+    <p>
+        The Chemovate Society aims to push the boundaries of chemistry by integrating 
+        modern computational techniques with traditional chemical sciences. Whether you’re 
+        interested in molecular modeling, chemical simulations, or just passionate about 
+        understanding chemistry in everyday life, this is the place for you!
+    </p>
+    
+    <h2>Who Can Join?</h2>
+    <p>
+        Our club is open to all students, regardless of their academic background. 
+        If you have an interest in chemistry and a passion for innovation, 
+        you’ll find like-minded individuals here.
+    </p>
+    
+    <h2>Get Involved</h2>
+    <p>
+        We regularly organize engaging activities, discussions, and hands-on 
+        experiences to enhance your understanding of chemistry. Stay tuned 
+        for our upcoming events and workshops!
+    </p>
+    
+    <p>
+        Check out our <a href="{% url 'upcoming_events' %}">Previous & Upcoming Events</a>.
+    </p>
+</div>
+
+{% endblock %}
