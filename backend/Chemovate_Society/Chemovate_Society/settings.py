@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-0e79$_4r)!bp-&9vc9(vv+!35@)o#8*wdtbc*mz!e1j_7((nfb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['thechemovatesociety.onrender.com']
 
 # AUTH_USER_MODEL = 'authentication.CustomUser'
 # MEDIA_URL = '/media/'
