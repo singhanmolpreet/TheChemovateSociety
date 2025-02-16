@@ -1,5 +1,4 @@
-#About Match Maestro
+#About The Chemovate Society
 
-We are building a project 'Match Maestro'. 
 
-[The site is live](https://match-maestro.onrender.com)
+[The site will be live soon]()
