@@ -59,14 +59,14 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'Chemovate_Society.urls'
+import os
 
-STATIC_URL = '/static/'  # URL used to access static files
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Absolute path where collectstatic will gather static files
-# STATICFILES_DIRS = [
-#     BASE_DIR / 'static',  # Path to your static files directory
-# ]
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For production
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # For development
+]
 
-# ... rest of your settings ...
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
