@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-0e79$_4r)!bp-&9vc9(vv+!35@)o#8*wdtbc*mz!e1j_7((nfb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['thechemovatesociety.onrender.com']
+ALLOWED_HOSTS = ['thechemovatesociety.onrender.com','127.0.0.1']
 
 # AUTH_USER_MODEL = 'authentication.CustomUser'
 # MEDIA_URL = '/media/'
@@ -60,19 +60,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'Chemovate_Society.urls'
 
-import os
-from pathlib import Path
-
-# ... other settings ...
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR.parent / 'staticcollected' # where django will collect the static files. It can not be same as STATICFILES_DIRS
-
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',  # Path to your static files directory
-]
+STATIC_URL = '/static/'  # URL used to access static files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Absolute path where collectstatic will gather static files
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'static',  # Path to your static files directory
+# ]
 
 # ... rest of your settings ...
 TEMPLATES = [
